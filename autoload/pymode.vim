@@ -69,7 +69,8 @@ endfunction "}}}
 " DESC: Open temp buffer.
 fun! pymode#tempbuffer_open(name) "{{{
     pclose
-    exe "botright 8new " . a:name
+    " change number to set number of lines for new window
+    exe "botright 20new " . a:name
     setlocal buftype=nofile bufhidden=delete noswapfile nowrap previewwindow
     redraw
 endfunction "}}}

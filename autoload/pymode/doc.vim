@@ -28,7 +28,11 @@ fun! pymode#doc#show(word) "{{{
     endif
 
     call pymode#tempbuffer_open('__doc__')
+    " need to allow the buffer to be modified so the documentation can be
+    " written to the buffer
+    setlocal modifiable
     PymodePython pymode.get_documentation()
+    " no need to modify the buffer after the documentation has been written
     setlocal nomodifiable
     setlocal nomodified
     setlocal filetype=rst
